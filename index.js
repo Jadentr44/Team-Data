@@ -1,56 +1,60 @@
 const inquirer = require('inquirer');
 const job = require('./jobs')
   
-  
-// const manager = new Promise((resolve, reject) => {
-//   inquirer
-//   .prompt([
-//     {message:"What is the project managers name?",name:"name"},
-//     {message:"What is the project managers ID?",name:"ID"},
-//     {message:"What is the project managers email?",name:"email"},
-//     {message:"What is the project managers office number?",name:"office"}
-//   ])
-//   .then((e) => {
-//     let Manager = new job.Manager(e.name,e.ID,e.email,e.office)
-//      resolve(Manager)
-//   })
-// });
-
-// const members = new Promise((resolve, reject) => {
-//   memberList = []
-//   addMember()
-//   function addMember(){
-//     inquirer
-//   .prompt([
-//     {
-//       type: 'list',
-//       name: 'next',
-//       message: 'Which member would you like to add?',
-//       choices: ['Engineer', 'Intern','No more members'],
-//     },
-//   ])
-//   .then(e => {
-//     console.info('You chose :', e.next);
-//   });
-//   }
-// });
-
-
-
-// //
-// Promise.all([manager,members])
-// .then((values) => {
-//   console.log(values);
-// })
-function askQuestion(){
+let team = []
+function addManager(){
   inquirer
   .prompt([
-    {message:'testing',name:'test'}
+    {message:"What is the project managers name?",name:"name"},
+    {message:"What is the project managers ID?",name:"ID"},
+    {message:"What is the project managers email?",name:"email"},
+    {message:"What is the project managers office number?",name:"office"}
   ])
-  .then((answers) => {
-    console.log(answers.test)
-    askQuestion()
+  .then((e) => {
+    let Manager = new job.Manager(e.name,e.ID,e.email,e.office)
+     team.push(Manager)
+     addMembers()
   })
-  
 }
-askQuestion()
+
+function addMembers(){
+  memberList = []
+  member()
+  function member(){
+    inquirer
+  .prompt([
+    {
+      type: 'list',
+      name: 'next',
+      message: 'Which member would you like to add?',
+      choices: ['Engineer', 'Intern','No more members'],
+    },
+  ])
+  .then(e => {
+    if(e.next === 'Engineer'){
+      team.push("Engineer")
+      member()
+    }
+    if(e.next === 'Intern'){
+      team.push("Intern")
+      member()
+    }
+  });
+  }
+}
+
+addManager();
+
+
+// function askQuestion(){
+//   inquirer
+//   .prompt([
+//     {message:'testing',name:'test'}
+//   ])
+//   .then((answers) => {
+//     console.log(answers.test)
+//     askQuestion()
+//   })
+  
+// }
+// askQuestion()
