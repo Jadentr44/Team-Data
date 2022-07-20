@@ -1,26 +1,27 @@
-class Manager{
-  constructor(name,id,email,office){
+class Member{
+  constructor(name,id,email){
     this.name = name;
     this.id = id;
     this.email = email;
+  }
+}
+class Manager extends Member{
+  constructor(name,id,email,office){
+    super(name,id,email)
     this.office = office;
     this.code = 'f7b6'
   }
 }
-class Engineer{
+class Engineer extends Member{
   constructor(name,id,email,github){
-    this.name = name;
-    this.id = id;
-    this.email = email;
+    super(name,id,email)
     this.github = github;
     this.code = 'f7b6'
   }
 }
-class Intern{
-  constructor(name,id,email,School){
-    this.name = name;
-    this.id = id;
-    this.email = email;
+class Intern extends Member{
+  constructor(name,id,email,school){
+    super(name,id,email)
     this.school = school;
     this.code = 'f7b6'
   }

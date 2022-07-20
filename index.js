@@ -1,17 +1,31 @@
 const inquirer = require('inquirer');
-
-function runScript(){
-  const members = []
-inquirer
+const job = require('./jobs')
+  
+  
+const manager = new Promise((resolve, reject) => {
+  inquirer
   .prompt([
-    {message:"What is the project managers name?",name:"managerName"},
+    {message:"What is the project managers name?",name:"name"},
     {message:"What is the project managers ID?",name:"ID"},
     {message:"What is the project managers email?",name:"email"},
     {message:"What is the project managers office number?",name:"office"}
   ])
-  .then((answers) => {
-    console.log(answers.managerName)
+  .then((e) => {
+    let Manager = new job.Manager(e.name,e.ID,e.email,e.office)
+     resolve(Manager)
   })
-}
+});
 
-runScript()
+const members = new Promise((resolve, reject) => {
+  function addMember(){
+
+  }
+});
+
+
+
+//
+Promise.all([manager])
+.then((values) => {
+  console.log(values);
+})
