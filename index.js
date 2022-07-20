@@ -17,15 +17,28 @@ const manager = new Promise((resolve, reject) => {
 });
 
 const members = new Promise((resolve, reject) => {
+  memberList = []
+  addMember()
   function addMember(){
-
+    inquirer
+  .prompt([
+    {
+      type: 'list',
+      name: 'next',
+      message: 'Which member would you like to add?',
+      choices: ['Engineer', 'Intern','No more members'],
+    },
+  ])
+  .then(e => {
+    console.info('You chose :', e.next);
+  });
   }
 });
 
 
 
 //
-Promise.all([manager])
+Promise.all([manager,members])
 .then((values) => {
   console.log(values);
 })
