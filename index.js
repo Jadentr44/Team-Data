@@ -2,7 +2,7 @@ const inquirer = require('inquirer');
 const job = require('./jobs')
   
 let team = []
-function addManager(){
+function addTeam(){
   inquirer
   .prompt([
     {message:"What is the project managers name?",name:"name"},
@@ -19,8 +19,8 @@ function addManager(){
 
 function addMembers(){
   memberList = []
-  member()
-  function member(){
+  newMember()
+  function newMember(){
     inquirer
   .prompt([
     {
@@ -30,31 +30,44 @@ function addMembers(){
       choices: ['Engineer', 'Intern','No more members'],
     },
   ])
-  .then(e => {
-    if(e.next === 'Engineer'){
-      team.push("Engineer")
-      member()
+  .then(option => {
+    if(option.next != 'Engineer' && option.next != 'Intern'){
+      console.log(team)
+    }else{
+      let info;
+      option.next == 'Engineer'?(info = {name:'Engineer',question:'github'}):(info = {name:'Intern',question:'school'})
+
+
+      inquirer
+  .prompt([
+    {message:`Whats ${info.name}s name?`,name:"name"},
+    {message:`Whats ${info.name}s ID?`,name:"ID"},
+    {message:`Whats ${info.name}s email?`,name:"email"},
+    {message:`Whats ${info.name}s ${info.question}?`,name:"info"}
+  ])
+  .then((e) => {
+    let member;
+    if(option.next = 'Engineer'){
+      member = new job.Engineer(e.name,e.ID,e.email,e.info)
+    }else{
+      member = new job.Intern(e.name,e.ID,e.email,e.info)
     }
-    if(e.next === 'Intern'){
-      team.push("Intern")
-      member()
+    team.push(member)
+    newMember()
+  })
     }
+    // if(e.next === 'Engineer'){
+    //   team.push("Engineer")
+    //   member()
+    // }
+    // if(e.next === 'Intern'){
+    //   team.push("Intern")
+    //   member()
+    // }
   });
   }
 }
 
-addManager();
+addTeam();
 
 
-// function askQuestion(){
-//   inquirer
-//   .prompt([
-//     {message:'testing',name:'test'}
-//   ])
-//   .then((answers) => {
-//     console.log(answers.test)
-//     askQuestion()
-//   })
-  
-// }
-// askQuestion()
