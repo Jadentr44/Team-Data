@@ -1,6 +1,7 @@
 main{
-  margin: 10%;
+  margin: 5% 20%;
 }
-.info{
-  border: solid 1px blue;
+.card{
+  margin: 1%;
+  padding: 0;
 }
