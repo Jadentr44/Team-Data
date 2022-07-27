@@ -3,30 +3,15 @@
 
 
 <!-- TABLE OF CONTENTS -->
-<details>
-  <summary>Table of Contents</summary>
+
+Table of Contents
   <ol>
-    <li>
-      <a href="#about-the-project">About The Project</a>
-      <ul>
-        <li><a href="#built-with">Built With</a></li>
-      </ul>
-    </li>
-    <li>
-      <a href="#getting-started">Getting Started</a>
-      <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
-      </ul>
-    </li>
-    <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#license">License</a></li>
-    <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgments">Acknowledgments</a></li>
+    <li>About the project</li>
+  <li>How to use</li>
+  <li>video walk through</li>
+  <li>Credits</li>
   </ol>
-</details>
+
 
 ## About The Project
 
@@ -35,4 +20,15 @@ When your on a team it is important to know who's on your team weather your mana
 ## How To Use
 
 1. after you download the proggram to your local machine you'll run it using 'node index.js'
-2. you'll be prompted questions about 
+2. you'll be prompted questions about the project manager, then given the choice to choose an Engineer or an Intern
+3. after answering all of the questions for your team you can select no more memebers
+4. your teams data will then aprear on the new index.html
+
+
+## Video walk through
+
+[video](https://drive.google.com/file/d/1wpqbCIZg5KU7XSgBvyYEhT3fhqy1xaOC/view?usp=sharing)
+
+## Credits
+
+all of the Node.js was writted by [Jaden Rodriguez](https://github.com/Jadentr44)
